@@ -1,4 +1,4 @@
-# Words
+# Word Iter
 
 simple rust library to iterate over all words in a given string
 
@@ -6,7 +6,7 @@ simple rust library to iterate over all words in a given string
 ## Usage
 
 ```rust
-use words::*;
+use word_iter::*;
 
 let iter_over_words = "hello world".words();
 ```
