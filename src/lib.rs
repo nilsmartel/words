@@ -42,7 +42,7 @@ fn next(i: &str) -> nom::IResult<&str, &str> {
     take_while1(|c| is_letter(c as char))(rest)
 }
 
-trait Words<'a> {
+pub trait Words<'a> {
     fn words(self) -> WordIter<'a>;
 }
 
@@ -52,7 +52,7 @@ impl<'a> Words<'a> for &'a str {
     }
 }
 
-struct WordIter<'a> {
+pub struct WordIter<'a> {
     rest: &'a str,
 }
 
