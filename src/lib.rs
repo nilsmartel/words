@@ -29,6 +29,17 @@ mod tests {
 
         assert_eq!(input.words().collect::<Vec<_>>(), expected);
     }
+
+    #[test]
+    fn non_ascii() {
+        let input = "Hellö wörld, my name is Nils Martel. I löve cöding in rust";
+        let expected = vec![
+            "Hellö", "wörld", "my", "name", "is", "Nils", "Martel", "I", "löve", "cöding", "in",
+            "rust",
+        ];
+
+        assert_eq!(input.words().collect::<Vec<_>>(), expected);
+    }
 }
 
 fn next(i: &str) -> Option<(&str, &str)> {

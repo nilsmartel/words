@@ -1,12 +1,10 @@
 [package]
 name = "word_iter"
-version = "0.1.0"
-authors = ["Nils Martel <nils.martel@graphmasters.net>"]
+version = "0.2.0"
+authors = ["Nils Martel <nilsmartel@yahoo.de>"]
 edition = "2018"
 repository = "https://github.com/nilsmartel/words"
 description = "Simple Iterator over all words in a string"
 license = "MIT"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
