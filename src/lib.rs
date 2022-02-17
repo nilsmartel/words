@@ -2,20 +2,20 @@
 mod tests {
     use super::*;
     fn tst(input: &str, expected: &str) {
-        assert_eq!(next(input).unwrap().1, expected);
+        assert_eq!(input.words().next().unwrap(), expected);
     }
     #[test]
-    fn next_word1() {
+    fn next_word() {
         tst("hello world", "hello");
     }
 
     #[test]
-    fn next_word2() {
+    fn cut_whitespace() {
         tst("  \nhello world", "hello");
     }
 
     #[test]
-    fn next_word3() {
+    fn remove_redundant_characters() {
         tst(".hello world", "hello");
     }
 
@@ -31,15 +31,32 @@ mod tests {
     }
 }
 
-fn is_letter(c: char) -> bool {
-    c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c >= '0' && c <= '9'
-}
+fn next(i: &str) -> Option<(&str, &str)> {
+    // start by cutting of all characters, that are not alphabetic
+    let mut start = 0;
+    for c in i.chars() {
+        if c.is_alphabetic() {
+            break;
+        }
+        start += c.len_utf8();
+    }
 
-fn next(i: &str) -> nom::IResult<&str, &str> {
-    use nom::bytes::complete::*;
-    let (rest, _whitespace) = take_till(is_letter)(i)?;
+    // now i is guaranteed to start with some alphabetic character
+    let i = &i[start..];
 
-    take_while1(|c| is_letter(c as char))(rest)
+    let mut end = 0;
+    for c in i.chars() {
+        if !c.is_alphabetic() {
+            break;
+        }
+
+        end += c.len_utf8();
+    }
+    if end == 0 {
+        return None;
+    }
+
+    Some((&i[..end], &i[end..]))
 }
 
 pub trait Words<'a> {
@@ -60,7 +77,7 @@ impl<'a> Iterator for WordIter<'a> {
     type Item = &'a str;
 
     fn next(&mut self) -> Option<Self::Item> {
-        let (rest, word) = next(self.rest).ok()?;
+        let (word, rest) = next(self.rest)?;
         self.rest = rest;
         Some(word)
     }
