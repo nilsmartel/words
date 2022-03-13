@@ -19,7 +19,7 @@ for word in iter_over_words {
 }
 ```
 
-# Is this library performant?
+## Is this library performant?
 Yes.
 
 A simple benchmark I ran on the entirety of _alice in wonderland_ (148574 bytes, 27345 words) took 598μs on an 2019 MacBook Pro (2,6 GHz 6-Core Intel Core i7)
