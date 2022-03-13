@@ -1,6 +1,6 @@
 [package]
 name = "word_iter"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["Nils Martel <nilsmartel@yahoo.de>"]
 edition = "2018"
 repository = "https://github.com/nilsmartel/words"

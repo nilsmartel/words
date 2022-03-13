@@ -18,3 +18,13 @@ for word in iter_over_words {
     println!("{}", word);
 }
 ```
+
+# Is this library performant?
+Yes.
+
+A simple benchmark I ran on the entirety of _alice in wonderland_ (148574 bytes, 27345 words) took 598μs on an 2019 MacBook Pro (2,6 GHz 6-Core Intel Core i7)
+
+
+
+## Why was this created?
+This library was made in order to aid with document analyses, specifically search engine related research.
